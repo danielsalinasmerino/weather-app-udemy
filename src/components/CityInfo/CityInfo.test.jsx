@@ -6,7 +6,11 @@ test("CityInfo render", async () => {
   // AAA
   // Arrange
   // Act
-  const { findAllByRole } = render(<CityInfo city="Madrid" country="España" />);
+  const city = "Madrid";
+  const country = "España";
+  const { findAllByRole } = render(<CityInfo city={city} country={country} />);
   // Assert
   const cityAndCountryComponents = await findAllByRole("heading");
+  expect(cityAndCountryComponents[0]).toHaveTextContent(city);
+  expect(cityAndCountryComponents[1]).toHaveTextContent(country);
 });
